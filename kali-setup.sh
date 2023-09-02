@@ -8,6 +8,12 @@ alias upgrade='sudo apt update && sudo apt upgrade -y && sudo apt full-upgrade -
 alias reload='source ~/.zshrc'
 
 
+## Useful Command Aliases
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+
+
 EOF
 fi
 
