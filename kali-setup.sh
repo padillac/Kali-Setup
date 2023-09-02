@@ -1,6 +1,8 @@
 ## Shell script to customize a fresh kali install
+# Requires an internet connection
 
 # Create ~/.zsh_aliases
+echo "Setting up ~/.zsh_aliases.."
 if ! [ -f ~/.zsh_aliases ]; then
     cat <<EOF > ~/.zsh_aliases
 ## Linux Aliases
@@ -18,8 +20,21 @@ EOF
 fi
 
 
+## Create tools directory and add to path
+mkdir -p /opt/tools
+echo "export PATH=$PATH:/opt/tools" >> ~/.zshrc
+
+## Install useful tools
+
+# Linpeas
+echo "Installing LinPEAS.."
+curl -L https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh -o /opt/tools/linpeas.sh && chmod 755 /opt/tools/linpeas.sh
 
 
+# Wrapping up
 
 # Reload shell configuration
-source ./zshrc
+source ~/.zshrc
+
+# Update distro and packages
+update
